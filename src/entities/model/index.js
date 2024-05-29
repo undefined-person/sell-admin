@@ -1,1 +1,1 @@
-export { useGetModelsQuery } from './queries'
+export { useGetModelsQuery, useDeleteModelMutation, useGetModelQuery } from './queries'

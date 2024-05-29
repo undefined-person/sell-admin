@@ -1,19 +1,28 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
+
 import { useGetModelsQuery } from '../../../entities/model'
 
 export const useGetModels = () => {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [searchParams, setSearchParams] = useSearchParams()
+
   const { data, isPending, isError } = useGetModelsQuery({
-    page: currentPage,
+    page: searchParams.get('page'),
   })
 
   const handleNextPage = () => {
-    setCurrentPage((prev) => prev + 1)
+    setSearchParams({ page: Number(searchParams.get('page')) + 1 })
   }
 
   const handlePrevPage = () => {
-    setCurrentPage((prev) => prev - 1)
+    setSearchParams({ page: Number(searchParams.get('page')) - 1 })
   }
+
+  useEffect(() => {
+    if (!searchParams.get('page')) {
+      setSearchParams({ page: 1 })
+    }
+  }, [])
 
   return {
     models: data?.models,

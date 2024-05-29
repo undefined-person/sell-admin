@@ -91,7 +91,7 @@ export function useAddModelForm() {
   return {
     form,
     onSubmit,
-    isLoading: addModelMutation.isLoading,
+    isLoading: addModelMutation.isPending,
     acceptedImageTypes: ACCEPTED_IMAGE_TYPES,
     acceptedModelTypes: ACCEPTED_MODEL_TYPES,
   }

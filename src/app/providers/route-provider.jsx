@@ -6,6 +6,7 @@ import { HomePage } from '../../pages/home-page'
 import { AddModelPage } from '../../pages/add-model-page'
 import { ProtectedPage } from '../../features/auth/ui/protected-page'
 import { MainLayout } from '../../shared/layouts/main-layout'
+import { PreviewModelPage } from '../../pages/preview-model-page'
 
 export const RouteProvider = () => {
   return (
@@ -31,7 +32,16 @@ export const RouteProvider = () => {
           </ProtectedPage>
         }
       />
-      {/* <Route path={ROUTES.PREVIEW_MODEL} element={<PreviewModel />} /> */}
+      <Route
+        path={`${ROUTES.PREVIEW_MODEL}/:id`}
+        element={
+          <ProtectedPage>
+            <MainLayout>
+              <PreviewModelPage />
+            </MainLayout>
+          </ProtectedPage>
+        }
+      />
     </Routes>
   )
 }

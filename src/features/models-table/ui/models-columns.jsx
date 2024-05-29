@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import { cn } from '../../../shared/utils/cn'
-import { Button, buttonVariants } from '../../../shared/ui/button'
+import { buttonVariants } from '../../../shared/ui/button'
+import { DeleteModal } from '../../delete-model/'
+import { ROUTES } from '../../../shared/const/routes'
+import { getImageUrl } from '../../../shared/utils/get-image-url'
 
 export const columns = [
   {
@@ -14,7 +17,7 @@ export const columns = [
       return (
         <img
           className="object-cover w-56 h-40 rounded-md"
-          src={`${import.meta.env.VITE_API_URI}/${row.original.images}`}
+          src={getImageUrl(row.original.images)}
           alt={row.original.name}
         />
       )
@@ -30,7 +33,7 @@ export const columns = [
       return (
         <div className="flex items-center justify-end gap-4">
           <Link
-            to={`/members/${row.original._id}`}
+            to={`${ROUTES.PREVIEW_MODEL}/${row.original._id}`}
             className={cn(
               buttonVariants({
                 variant: 'default',
@@ -38,8 +41,18 @@ export const columns = [
             )}>
             View
           </Link>
-          <Button variant="outline">Edit</Button>
-          <Button variant="destructive">Delete</Button>
+          <Link
+            to={`
+            ${ROUTES.EDIT_MODEL}/${row.original._id}
+          `}
+            className={cn(
+              buttonVariants({
+                variant: 'outline',
+              })
+            )}>
+            Edit
+          </Link>
+          <DeleteModal id={row.original._id} />
         </div>
       )
     },
