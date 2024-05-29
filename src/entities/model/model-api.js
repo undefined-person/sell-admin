@@ -7,7 +7,6 @@ export const addModel = async (model) => {
     },
   })
 
-  console.log('response', response)
   return response.data
 }
 

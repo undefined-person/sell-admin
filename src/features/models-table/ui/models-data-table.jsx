@@ -19,7 +19,7 @@ export function ModelsDataTable({ columns, data, handleNextPage, handlePrevPage,
   })
 
   return (
-    <div className="container mx-auto mt-6 max-lg:hidden">
+    <div className="mt-6 max-lg:hidden">
       <div className="border rounded-md">
         <Table>
           <TableHeader>

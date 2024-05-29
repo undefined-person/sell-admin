@@ -15,23 +15,8 @@ import { Checkbox } from '../../../shared/ui/checkbox'
 import { Label } from '../../../shared/ui/label'
 
 export function AddModelForm() {
-  const { acceptedImageTypes, acceptedModelTypes, form, isLoading, mutationFn } = useAddModelForm()
+  const { acceptedImageTypes, acceptedModelTypes, form, isLoading, onSubmit } = useAddModelForm()
 
-  const onSubmit = form.handleSubmit(async (data) => {
-    const formData = new FormData()
-
-    Object.entries(data).forEach(([key, value]) => {
-      if (value instanceof FileList) {
-        Array.from(value).forEach((file) => {
-          formData.append(key, file)
-        })
-      } else {
-        formData.append(key, value)
-      }
-    })
-
-    mutationFn(formData)
-  })
   return (
     <Form {...form}>
       <form onSubmit={onSubmit} className="w-full mt-4 space-y-4">
@@ -74,6 +59,34 @@ export function AddModelForm() {
             </FormItem>
           )}
         />
+        <div className="grid grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="vertices"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Vertices</FormLabel>
+                <FormControl>
+                  <Input {...field} type="number" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="polygons"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Polygons</FormLabel>
+                <FormControl>
+                  <Input {...field} type="number" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <div className="grid grid-cols-2 gap-4">
           <FormField
             control={form.control}

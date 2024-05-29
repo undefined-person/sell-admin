@@ -13,6 +13,8 @@ const addModelSchema = z.object({
   name: z.string().min(3, 'Must be at least 3 characters').max(50, 'Must contain at most 50 character(s)'),
   price: z.coerce.number().gte(1, 'Price must be at least 1').max(1000000, 'Price must be at most 1000000'),
   description: z.string().min(3, 'Must be at least 3 characters').max(1000, 'Must contain at most 1000 character(s)'),
+  vertices: z.coerce.number().gte(1, 'Vertices must be at least 1'),
+  polygons: z.coerce.number().gte(1, 'Polygons must be at least 1'),
   animated: z.boolean().default(false),
   rigged: z.boolean().default(false),
   vrArLowPoly: z.boolean().default(false),
@@ -28,7 +30,7 @@ const addModelSchema = z.object({
 })
 
 export function useAddModelForm() {
-  const toast = useToast()
+  const { toast } = useToast()
 
   const form = useForm({
     resolver: zodResolver(addModelSchema),
@@ -36,6 +38,8 @@ export function useAddModelForm() {
       name: '',
       price: '',
       description: '',
+      vertices: 0,
+      polygons: 0,
       animated: false,
       rigged: false,
       vrArLowPoly: false,
@@ -58,7 +62,7 @@ export function useAddModelForm() {
         title: 'Success',
         description: 'Model added successfully',
       })
-      // form.reset()
+      form.reset()
     },
     onError: (error) => {
       toast({
@@ -68,10 +72,26 @@ export function useAddModelForm() {
     },
   })
 
+  const onSubmit = form.handleSubmit((data) => {
+    const formData = new FormData()
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (value instanceof FileList) {
+        Array.from(value).forEach((file) => {
+          formData.append(key, file)
+        })
+      } else {
+        formData.append(key, value)
+      }
+    })
+
+    addModelMutation.mutate(formData)
+  })
+
   return {
     form,
-    mutationFn: addModelMutation.mutate,
-    isLoading: addModelMutation.isPending,
+    onSubmit,
+    isLoading: addModelMutation.isLoading,
     acceptedImageTypes: ACCEPTED_IMAGE_TYPES,
     acceptedModelTypes: ACCEPTED_MODEL_TYPES,
   }
