@@ -3,5 +3,4 @@ export const ROUTES = {
   SIGN_IN: '/sign-in',
   ADD_MODEL: '/add-model',
   PREVIEW_MODEL: '/preview-model',
-  EDIT_MODEL: '/edit-model',
 }

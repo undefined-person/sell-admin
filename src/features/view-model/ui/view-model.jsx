@@ -7,36 +7,6 @@ import { getImageUrl } from '../../../shared/utils/get-image-url'
 import { Card, CardContent, CardHeader } from '../../../shared/ui/card'
 import { Button } from '../../../shared/ui/button'
 
-// {
-//   "_id": "665726aa4923168b43665a36",
-//   "name": "123",
-//   "description": "123",
-//   "price": 123,
-//   "animated": true,
-//   "rigged": false,
-//   "vrArLowPoly": false,
-//   "pbr": false,
-//   "geometry": "Polygon mesh",
-//   "polygons": 123123,
-//   "vertices": 123123,
-//   "textures": false,
-//   "materials": false,
-//   "uvMapping": true,
-//   "unwrappedUVs": true,
-//   "pluginsUsed": true,
-//   "readyFor3DPrinting": false,
-//   "images": [
-//     "/images/455901673-Screenshot 2024-01-09 122058 - Copy - Copy (2).png",
-//     "/images/581544039-Screenshot 2024-01-09 122058 - Copy (2).png",
-//     "/images/202731946-Screenshot 2024-01-09 124741 - Copy.png"
-//   ],
-//   "model": [
-//     "/images/667592532-uploads_files_2421249_TV+Room+by+Deline.fbx"
-//   ],
-//   "publishDate": "2024-05-29T12:59:22.650Z",
-//   "__v": 0
-// }
-
 export function ViewModel() {
   const { isError, isPending, model } = useGetModelById()
 
@@ -47,8 +17,6 @@ export function ViewModel() {
   if (isError) {
     return <div>Something went wrong</div>
   }
-
-  console.log(model)
 
   return (
     <section>
@@ -62,8 +30,8 @@ export function ViewModel() {
               }),
             ]}>
             <CarouselContent>
-              {model.images.map((imageUrl, index) => (
-                <CarouselItem key={index}>
+              {model.images.map((imageUrl) => (
+                <CarouselItem key={imageUrl}>
                   <img className="rounded-lg" src={getImageUrl(imageUrl)} alt={imageUrl} />
                 </CarouselItem>
               ))}

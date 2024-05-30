@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+
 import { cn } from '../../../shared/utils/cn'
 import { buttonVariants } from '../../../shared/ui/button'
 import { DeleteModal } from '../../delete-model/'
@@ -40,17 +41,6 @@ export const columns = [
               })
             )}>
             View
-          </Link>
-          <Link
-            to={`
-            ${ROUTES.EDIT_MODEL}/${row.original._id}
-          `}
-            className={cn(
-              buttonVariants({
-                variant: 'outline',
-              })
-            )}>
-            Edit
           </Link>
           <DeleteModal id={row.original._id} />
         </div>
