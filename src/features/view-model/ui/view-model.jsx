@@ -5,7 +5,6 @@ import { useGetModelById } from '../model/use-get-model-by-id'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../../../shared/ui/carousel'
 import { getImageUrl } from '../../../shared/utils/get-image-url'
 import { Card, CardContent, CardHeader } from '../../../shared/ui/card'
-import { Button } from '../../../shared/ui/button'
 
 export function ViewModel() {
   const { isError, isPending, model } = useGetModelById()
@@ -46,37 +45,32 @@ export function ViewModel() {
         </div>
         <div className="ml-16">
           <Card>
-            <CardContent className="flex items-center justify-center gap-4 p-4">
-              <p className="text-xl font-semibold">{model.price}₴</p>
-              <Button>Buy</Button>
-            </CardContent>
-          </Card>
-          <Card className="mt-4">
-            <CardHeader className="text-xl font-semibold">3D Model details</CardHeader>
+            <CardHeader className="text-xl font-semibold">Деталі 3D моделі</CardHeader>
             <CardContent>
               <ul className="space-y-2">
                 <li className="flex items-center justify-between pb-2 border-b">
-                  Publish date <span className="font-semibold">{new Date(model.publishDate).toLocaleDateString()}</span>
+                  Дата публікації{' '}
+                  <span className="font-semibold">{new Date(model.publishDate).toLocaleDateString()}</span>
                 </li>
                 <li className="flex items-center justify-between pb-2 border-b">
-                  Geometry <span className="font-semibold">{model.geometry}</span>
+                  Геометрія <span className="font-semibold">{model.geometry}</span>
                 </li>
                 <li className="flex items-center justify-between pb-2 border-b">
-                  Polygons <span className="font-semibold">{model.polygons}</span>
+                  Полігони <span className="font-semibold">{model.polygons}</span>
                 </li>
                 <li className="flex items-center justify-between pb-2 border-b">
-                  Vertices <span className="font-semibold">{model.vertices}</span>
+                  Вершини <span className="font-semibold">{model.vertices}</span>
                 </li>
-                <DetailBooleanItem label="Textures" value={model.textures} />
-                <DetailBooleanItem label="Materials" value={model.materials} />
-                <DetailBooleanItem label="UV Mapping" value={model.uvMapping} />
-                <DetailBooleanItem label="Unwrapped UVs" value={model.unwrappedUVs} />
-                <DetailBooleanItem label="Plugins used" value={model.pluginsUsed} />
-                <DetailBooleanItem label="Ready for 3D printing" value={model.readyFor3DPrinting} />
-                <DetailBooleanItem label="Animated" value={model.animated} />
-                <DetailBooleanItem label="Rigged" value={model.rigged} />
-                <DetailBooleanItem label="VR/AR low poly" value={model.vrArLowPoly} />
-                <DetailBooleanItem label="PBR" value={model.pbr} />
+                <DetailBooleanItem label="Текстури" value={model.textures} />
+                <DetailBooleanItem label="Матеріали" value={model.materials} />
+                <DetailBooleanItem label="UV-маппінг" value={model.uvMapping} />
+                <DetailBooleanItem label="Розгорнуті UV" value={model.unwrappedUVs} />
+                <DetailBooleanItem label="Використано плагіни" value={model.pluginsUsed} />
+                <DetailBooleanItem label="Готова для 3D-друку" value={model.readyFor3DPrinting} />
+                <DetailBooleanItem label="Анімована" value={model.animated} />
+                <DetailBooleanItem label="З ригінгом" value={model.rigged} />
+                <DetailBooleanItem label="VR/AR низькополігональна" value={model.vrArLowPoly} />
+                <DetailBooleanItem label="PBR (фізично обґрунтований рендеринг)" value={model.pbr} />
               </ul>
             </CardContent>
           </Card>

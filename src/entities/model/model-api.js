@@ -31,9 +31,3 @@ export const deleteModel = async (id) => {
 
   return response.data
 }
-
-export const updateModel = async (id, model) => {
-  const response = await $api.patch(`/model/${id}`, model)
-
-  return response.data
-}

@@ -8,13 +8,13 @@ export function Header() {
     <header className="bg-white">
       <div className="container flex items-center justify-between p-4 mx-auto">
         <Link to={ROUTES.HOME} className="text-xl font-semibold">
-          ADMIN
+          Адмін панель
         </Link>
         <Button
           onClick={() => {
             navigate(ROUTES.ADD_MODEL)
           }}>
-          Add model
+          Додати модель
         </Button>
       </div>
     </header>

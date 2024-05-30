@@ -9,11 +9,11 @@ import { getImageUrl } from '../../../shared/utils/get-image-url'
 export const columns = [
   {
     accessorKey: 'name',
-    header: 'Name',
+    header: `Назва`,
   },
   {
     accessorKey: 'images',
-    header: 'Image',
+    header: 'Картинка',
     cell: ({ row }) => {
       return (
         <img
@@ -26,7 +26,7 @@ export const columns = [
   },
   {
     accessorKey: 'price',
-    header: 'Price',
+    header: 'Ціна',
   },
   {
     id: 'actions',
@@ -40,7 +40,7 @@ export const columns = [
                 variant: 'default',
               })
             )}>
-            View
+            Переглянути
           </Link>
           <DeleteModal id={row.original._id} />
         </div>

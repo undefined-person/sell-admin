@@ -5,7 +5,7 @@ export function DeleteModal({ id }) {
   const { handleDeleteModel, isDeleteModelPending } = useDeleteModel()
   return (
     <Button variant="destructive" onClick={() => handleDeleteModel(id)} disabled={isDeleteModelPending}>
-      Delete
+      Видалити
     </Button>
   )
 }

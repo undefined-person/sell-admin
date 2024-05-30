@@ -25,7 +25,7 @@ export function AddModelForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Назва</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -38,7 +38,7 @@ export function AddModelForm() {
           name="price"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Price</FormLabel>
+              <FormLabel>Ціна</FormLabel>
               <FormControl>
                 <Input {...field} type="number" />
               </FormControl>
@@ -51,7 +51,7 @@ export function AddModelForm() {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>Опис</FormLabel>
               <FormControl>
                 <Textarea {...field} />
               </FormControl>
@@ -65,7 +65,7 @@ export function AddModelForm() {
             name="vertices"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Vertices</FormLabel>
+                <FormLabel>Вершини</FormLabel>
                 <FormControl>
                   <Input {...field} type="number" />
                 </FormControl>
@@ -78,9 +78,22 @@ export function AddModelForm() {
             name="polygons"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Polygons</FormLabel>
+                <FormLabel>Полігони</FormLabel>
                 <FormControl>
                   <Input {...field} type="number" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="geometry"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Геометрія</FormLabel>
+                <FormControl>
+                  <Input {...field} type="text" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -97,8 +110,8 @@ export function AddModelForm() {
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>Animated</FormLabel>
-                  <FormDescription>Check this box if the model is animated.</FormDescription>
+                  <FormLabel>Анімована</FormLabel>
+                  <FormDescription>Поставте галочку в цьому полі, якщо модель анімована.</FormDescription>
                 </div>
               </FormItem>
             )}
@@ -112,8 +125,8 @@ export function AddModelForm() {
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>Rigged</FormLabel>
-                  <FormDescription>Check this box if the model is rigged.</FormDescription>
+                  <FormLabel>З ригінгом</FormLabel>
+                  <FormDescription>Поставте галочку в цьому полі, якщо модель має ригінг.</FormDescription>
                 </div>
               </FormItem>
             )}
@@ -127,8 +140,10 @@ export function AddModelForm() {
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>VR/AR Low Poly</FormLabel>
-                  <FormDescription>Check this box if the model is VR/AR Low Poly.</FormDescription>
+                  <FormLabel>VR/AR низькополігональний</FormLabel>
+                  <FormDescription>
+                    Поставте галочку в цьому полі, якщо модель є VR/AR низькополігональною.
+                  </FormDescription>
                 </div>
               </FormItem>
             )}
@@ -142,8 +157,10 @@ export function AddModelForm() {
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>PBR</FormLabel>
-                  <FormDescription>Check this box if the model uses PBR.</FormDescription>
+                  <FormLabel>PBR (фізично обґрунтований рендеринг)</FormLabel>
+                  <FormDescription>
+                    Поставте галочку в цьому полі, якщо модель використовує PBR (фізично обґрунтований рендеринг).
+                  </FormDescription>
                 </div>
               </FormItem>
             )}
@@ -157,8 +174,8 @@ export function AddModelForm() {
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>Textures</FormLabel>
-                  <FormDescription>Check this box if the model uses textures.</FormDescription>
+                  <FormLabel>Текстури</FormLabel>
+                  <FormDescription>Поставте галочку в цьому полі, якщо модель використовує текстури.</FormDescription>
                 </div>
               </FormItem>
             )}
@@ -172,8 +189,8 @@ export function AddModelForm() {
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>Materials</FormLabel>
-                  <FormDescription>Check this box if the model uses materials.</FormDescription>
+                  <FormLabel>Матеріали</FormLabel>
+                  <FormDescription>Поставте галочку в цьому полі, якщо модель використовує матеріали.</FormDescription>
                 </div>
               </FormItem>
             )}
@@ -187,8 +204,8 @@ export function AddModelForm() {
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>UV Mapping</FormLabel>
-                  <FormDescription>Check this box if the model uses UV mapping.</FormDescription>
+                  <FormLabel>UV-маппінг</FormLabel>
+                  <FormDescription>Поставте галочку в цьому полі, якщо модель використовує UV-маппінг.</FormDescription>
                 </div>
               </FormItem>
             )}
@@ -202,8 +219,10 @@ export function AddModelForm() {
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>Unwrapped UVs</FormLabel>
-                  <FormDescription>Check this box if the model has unwrapped UVs.</FormDescription>
+                  <FormLabel>Розгорнуті UV</FormLabel>
+                  <FormDescription>
+                    Поставте галочку в цьому полі, якщо модель використовує розгорнуті UV.
+                  </FormDescription>
                 </div>
               </FormItem>
             )}
@@ -217,8 +236,8 @@ export function AddModelForm() {
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>Plugins Used</FormLabel>
-                  <FormDescription>Check this box if the model uses plugins.</FormDescription>
+                  <FormLabel>Використані плагіни</FormLabel>
+                  <FormDescription>Поставте галочку в цьому полі, якщо модель використовує плагіни.</FormDescription>
                 </div>
               </FormItem>
             )}
@@ -232,16 +251,15 @@ export function AddModelForm() {
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>Ready for 3D Printing</FormLabel>
-                  <FormDescription>Check this box if the model is ready for 3D printing.</FormDescription>
+                  <FormLabel>Готова для 3D-друку</FormLabel>
+                  <FormDescription>Поставте галочку в цьому полі, якщо модель готова для 3D-друку.</FormDescription>
                 </div>
               </FormItem>
             )}
           />
         </div>
-
         <div>
-          <Label>Images</Label>
+          <Label>Зображення</Label>
           <Input
             type="file"
             {...form.register('images')}
@@ -251,7 +269,7 @@ export function AddModelForm() {
           />
         </div>
         <div>
-          <Label>Models</Label>
+          <Label>Моделі</Label>
           <Input
             type="file"
             {...form.register('model')}
@@ -262,7 +280,7 @@ export function AddModelForm() {
         </div>
 
         <Button type="submit" className="w-full" disabled={isLoading}>
-          Add model
+          Додати модель
         </Button>
       </form>
     </Form>
